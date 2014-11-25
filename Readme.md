@@ -28,6 +28,9 @@ The metrics exposed by this plugin are:
 Total active:
 - `helpscout active tickets` - the total number of active tickets in teh mailboxes
 
+Total pending:
+- `helpscout pending tickets` - the total number of pending tickets in teh mailboxes
+
 Weekly:
 - `helpscout tickets modified avg` - the trailing average of tickets modified in the last 7 days
 - `helpscout tickets modified last week` - tickets modified in the last 7 days
