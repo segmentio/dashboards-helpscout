@@ -36,6 +36,7 @@ function plugin (apiKey, mailboxes) {
       mailboxes.forEach(function (c) { convos = convos.concat(c); });
 
       totalActive(metrics, convos);
+      totalPending(metrics, convos);
       weekly(metrics, convos);
       oldestBreakdown(metrics, convos);
       todayBreakdown(metrics, convos);
@@ -53,6 +54,18 @@ function plugin (apiKey, mailboxes) {
 function totalActive (metrics, convos) {
   var active = convos.filter(function (convo) { return convo.status === 'active'; });
   metrics.set('helpscout active tickets', active.length);
+}
+
+/**
+ * Calculate the total pending tickets.
+ *
+ * @param {Array|Conversation} convos
+ * @param {Object} results
+ */
+
+function totalPending (metrics, convos) {
+  var pending = convos.filter(function (convo) { return convo.status === 'pending'; });
+  metrics.set('helpscout pending tickets', pending.length);
 }
 
 /**
