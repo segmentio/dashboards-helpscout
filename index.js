@@ -131,8 +131,9 @@ function todayBreakdown (metrics, convos) {
 
   var end = ceil(new Date());
   var start = floor(new Date());
-
-  closedAt(convos, start, end).forEach(function (convo) {
+  var closed = closedAt(convos, start, end);
+  
+  closed.forEach(function (convo) {
     var owner = convo.owner;
     if (owner) {
       var n = name(owner);
@@ -157,6 +158,7 @@ function todayBreakdown (metrics, convos) {
     metrics.set('helpscout second place closed', breakdown[second]);
   }
 
+  metrics.set('helpscout tickets closed today', closed.length);
   metrics.set('helpscout tickets closed today by owner', breakdown);
 }
 
